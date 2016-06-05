@@ -1,0 +1,18 @@
+<%= form_for(@machine_type) do |f| %>
+  <% if @machine_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@machine_type.errors.count, "error") %> prohibited this machine_type from being saved:</h2>
+
+      <ul>
+      <% @machine_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  </div>
+<% end %>
