@@ -10,9 +10,10 @@
   <%= stylesheet_link_tag "http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" %>
 
   <!-- REQUIRED JS SCRIPTS -->
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
@@ -44,10 +45,10 @@ desired effect
 
     <!-- Logo -->
     <%= link_to root_path, class: 'logo' do %>
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>S</b>DB</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Sentabe</b></span>
     <% end %>
 
     <!-- Header Navbar -->
@@ -75,7 +76,7 @@ desired effect
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -159,14 +160,14 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <!--<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
 
                 <p>
                   Alexander Pierce - Web Developer
@@ -216,7 +217,7 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -242,7 +243,24 @@ desired effect
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li>
+          <%= link_to machine_types_path do %>
+            <i class="fa fa-link"></i>
+            <span>Machine Types</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to machines_path do %>
+            <i class="fa fa-link"></i>
+            <span>Machines</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to data_types_path do %>
+            <i class="fa fa-link"></i>
+            <span>Data Types</span>
+          <% end %>
+        </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
@@ -269,7 +287,7 @@ desired effect
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2016 Keigo Ogawa.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -315,7 +333,7 @@ desired effect
           </li>
         </ul>
         <!-- /.control-sidebar-menu -->
-a
+        a
       </div>
       <!-- /.tab-pane -->
       <!-- Stats tab content -->

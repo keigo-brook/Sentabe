@@ -1,4 +1,29 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @machine_type.name %></h1>
+<div>
+  <%= link_to 'Create New Machine', new_machine_path(machine_type_id: @machine_type.id) %>
 
-<%= link_to 'Edit', edit_machine_type_path(@machine_type) %> |
-<%= link_to 'Back', machine_types_path %>
+  <%= link_to 'Edit', edit_machine_type_path(@machine_type) %> |
+  <%= link_to 'Back', machine_types_path %>
+</div>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th colspan="5"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @machine_type.machines.each do |machine| %>
+        <tr>
+          <td><%= machine.id %></td>
+          <td><%= machine.name %></td>
+          <td><%= link_to 'Show', machine %></td>
+          <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
+          <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+

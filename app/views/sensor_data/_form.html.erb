@@ -1,0 +1,55 @@
+<%= form_for [@data_type, @sensor_data] do |f| %>
+  <% if @sensor_data.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sensor_data.errors.count, "error") %> prohibited this sensor from being saved:</h2>
+
+      <ul>
+        <% @sensor_data.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :sensor %>
+    <%= f.select(:sensor_id, @data_type.sensors.all.map { |i| [i.name, i.id] }, {selected: params[:sensor_id].to_i}) %>
+  </div>
+
+  <div>
+    <%= f.label :captured_at %>
+    <%= f.datetime_select :captured_at %>
+  </div>
+
+  <% case @sensor_data %>
+  <% when IntDatum %>
+    <div>
+      <%= f.label :idata %>
+      <%= f.number_field :idata %>
+    </div>
+  <% when FloatDatum %>
+    <div>
+      <%= f.label :fdata %>
+      <%= f.number_field :fdata %>
+    </div>
+  <% when TextDatum %>
+    <div>
+      <%= f.label :tdata %>
+      <%= f.text_field :tdata %>
+    </div>
+  <% when TimeDatum %>
+    <div>
+      <%= f.label :timedata %>
+      <%= f.datetime_field :timedata %>
+    </div>
+  <% else %>
+    <div>
+      Unknown data class: <%= @sensor_data.class.to_s %>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

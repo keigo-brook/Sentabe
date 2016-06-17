@@ -4,12 +4,36 @@
       <h2><%= pluralize(@sensor.errors.count, "error") %> prohibited this sensor from being saved:</h2>
 
       <ul>
-      <% @sensor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @sensor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+
+  <div>
+    <%= f.label :machine %>
+    <%= f.select(:machine_id, Machine.all.map { |i| [i.name, i.id] }, {selected: params[:machine_id].to_i}) %>
+  </div>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :data_types %>
+    <%= f.fields_for :data_types do |data_type| %>
+      <div>
+        <%= data_type.label :name %>
+        <%= data_type.text_field :name %>
+      </div>
+      <div>
+        <%= data_type.label :dtype %>
+        <%= data_type.select :dtype, DataType.dtypes.keys %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

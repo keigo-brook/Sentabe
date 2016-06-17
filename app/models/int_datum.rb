@@ -1,4 +1,7 @@
-class IntDatum < ActiveRecord::Base
-  belongs_to :sensor
-  belongs_to :data_type
+class IntDatum < SensorDatum
+  validates :idata, presence: true
+
+  def data
+    self.idata
+  end
 end

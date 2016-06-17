@@ -4,12 +4,22 @@
       <h2><%= pluralize(@machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
 
       <ul>
-      <% @machine.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @machine.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+
+  <div>
+    <%= f.label :machine_type %>
+    <%= f.select(:machine_type_id, MachineType.all.map { |i| [i.name, i.id] }) %>
+  </div>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

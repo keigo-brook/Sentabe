@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @machine.name %></h1>
 
+<table>
+  <thead>
+  <tr>
+    <th colspan="5"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @machine.sensors.each do |sensor| %>
+    <tr>
+      <td><%= sensor.name %></td>
+      <td><%= link_to 'Show', sensor %></td>
+      <td><%= link_to 'Edit', edit_sensor_path(sensor) %></td>
+      <td><%= link_to 'Destroy', sensor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add sensor', new_sensor_path(machine_id: @machine.id) %>
 <%= link_to 'Edit', edit_machine_path(@machine) %> |
 <%= link_to 'Back', machines_path %>

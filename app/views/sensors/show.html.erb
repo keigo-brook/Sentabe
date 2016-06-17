@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @sensor.machine.name %> > <%= @sensor.name %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th colspan="4"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sensor.data_types.each do |data_type| %>
+    <tr>
+      <td><%= data_type.name %></td>
+      <td><%= link_to 'Show', data_type_path(data_type, sensor_id: @sensor.id) %></td>
+      <td><%= link_to 'Edit', edit_data_type_path(data_type.id) %></td>
+      <td><%= link_to 'Destroy', data_type_path(data_type.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_sensor_path(@sensor) %> |
 <%= link_to 'Back', sensors_path %>

@@ -1,4 +1,7 @@
-class FloatDatum < ActiveRecord::Base
-  belongs_to :sensor
-  belongs_to :data_type
+class FloatDatum < SensorDatum
+  validates :fdata, presence: true
+
+  def data
+    self.fdata
+  end
 end

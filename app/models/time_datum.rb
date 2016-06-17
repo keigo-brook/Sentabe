@@ -1,4 +1,7 @@
-class TimeDatum < ActiveRecord::Base
-  belongs_to :sensor
-  belongs_to :data_type
+class TimeDatum < SensorDatum
+  validates :timedata, presence: true
+
+  def data
+    self.timedata
+  end
 end

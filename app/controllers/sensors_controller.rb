@@ -15,6 +15,7 @@ class SensorsController < ApplicationController
   # GET /sensors/new
   def new
     @sensor = Sensor.new
+    @sensor.data_types.build
   end
 
   # GET /sensors/1/edit
@@ -62,13 +63,14 @@ class SensorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sensor
-      @sensor = Sensor.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sensor
+    @sensor = Sensor.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def sensor_params
-      params.fetch(:sensor, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def sensor_params
+    params.require(:sensor).permit(:machine_id, :name, data_types_attributes: [:name, :dtype])
+  end
+
 end

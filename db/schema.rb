@@ -11,28 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603023658) do
+ActiveRecord::Schema.define(version: 20160612113623) do
 
   create_table "data_types", force: :cascade do |t|
-    t.integer  "sensor_id",  limit: 4
     t.string   "name",       limit: 255
-    t.integer  "type",       limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "float_data", force: :cascade do |t|
-    t.integer  "data_type_id", limit: 4
-    t.integer  "sensor_id",    limit: 4
-    t.float    "data",         limit: 24
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "int_data", force: :cascade do |t|
-    t.integer  "data_type_id", limit: 4
-    t.integer  "sensor_id",    limit: 4
-    t.integer  "data",         limit: 4
+    t.integer  "dtype",      limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -50,25 +33,31 @@ ActiveRecord::Schema.define(version: 20160603023658) do
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "sensors", force: :cascade do |t|
-    t.integer  "machine_id", limit: 4
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "text_data", force: :cascade do |t|
+  create_table "sensor_data", force: :cascade do |t|
     t.integer  "data_type_id", limit: 4
     t.integer  "sensor_id",    limit: 4
-    t.text     "data",         limit: 65535
+    t.datetime "captured_at"
+    t.integer  "idata",        limit: 4
+    t.float    "fdata",        limit: 24
+    t.text     "tdata",        limit: 65535
+    t.datetime "timedata"
+    t.string   "type",         limit: 255
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "time_data", force: :cascade do |t|
-    t.integer  "data_type_id", limit: 4
+  add_index "sensor_data", ["type"], name: "index_sensor_data_on_type", using: :btree
+
+  create_table "sensor_data_types", force: :cascade do |t|
     t.integer  "sensor_id",    limit: 4
-    t.datetime "data"
+    t.integer  "data_type_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "sensors", force: :cascade do |t|
+    t.integer  "machine_id", limit: 4
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

@@ -1,4 +1,7 @@
-class TextDatum < ActiveRecord::Base
-  belongs_to :sensor
-  belongs_to :data_type
+class TextDatum < SensorDatum
+  validates :tdata, presence: true
+
+  def data
+    self.tdata
+  end
 end

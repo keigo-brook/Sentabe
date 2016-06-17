@@ -1,0 +1,82 @@
+                     Prefix Verb   URI Pattern                                              Controller#Action
+                       root GET    /                                                        static_pages#home
+              machine_types GET    /machine_types(.:format)                                 machine_types#index
+                            POST   /machine_types(.:format)                                 machine_types#create
+           new_machine_type GET    /machine_types/new(.:format)                             machine_types#new
+          edit_machine_type GET    /machine_types/:id/edit(.:format)                        machine_types#edit
+               machine_type GET    /machine_types/:id(.:format)                             machine_types#show
+                            PATCH  /machine_types/:id(.:format)                             machine_types#update
+                            PUT    /machine_types/:id(.:format)                             machine_types#update
+                            DELETE /machine_types/:id(.:format)                             machine_types#destroy
+                   machines GET    /machines(.:format)                                      machines#index
+                            POST   /machines(.:format)                                      machines#create
+                new_machine GET    /machines/new(.:format)                                  machines#new
+               edit_machine GET    /machines/:id/edit(.:format)                             machines#edit
+                    machine GET    /machines/:id(.:format)                                  machines#show
+                            PATCH  /machines/:id(.:format)                                  machines#update
+                            PUT    /machines/:id(.:format)                                  machines#update
+                            DELETE /machines/:id(.:format)                                  machines#destroy
+                    sensors GET    /sensors(.:format)                                       sensors#index
+                            POST   /sensors(.:format)                                       sensors#create
+                 new_sensor GET    /sensors/new(.:format)                                   sensors#new
+                edit_sensor GET    /sensors/:id/edit(.:format)                              sensors#edit
+                     sensor GET    /sensors/:id(.:format)                                   sensors#show
+                            PATCH  /sensors/:id(.:format)                                   sensors#update
+                            PUT    /sensors/:id(.:format)                                   sensors#update
+                            DELETE /sensors/:id(.:format)                                   sensors#destroy
+      data_type_sensor_data GET    /data_types/:data_type_id/sensor_data(.:format)          sensor_data#index
+                            POST   /data_types/:data_type_id/sensor_data(.:format)          sensor_data#create
+ new_data_type_sensor_datum GET    /data_types/:data_type_id/sensor_data/new(.:format)      sensor_data#new
+edit_data_type_sensor_datum GET    /data_types/:data_type_id/sensor_data/:id/edit(.:format) sensor_data#edit
+     data_type_sensor_datum GET    /data_types/:data_type_id/sensor_data/:id(.:format)      sensor_data#show
+                            PATCH  /data_types/:data_type_id/sensor_data/:id(.:format)      sensor_data#update
+                            PUT    /data_types/:data_type_id/sensor_data/:id(.:format)      sensor_data#update
+                            DELETE /data_types/:data_type_id/sensor_data/:id(.:format)      sensor_data#destroy
+       data_type_float_data GET    /data_types/:data_type_id/float_data(.:format)           sensor_data#index {:type=>"FloatDatum"}
+                            POST   /data_types/:data_type_id/float_data(.:format)           sensor_data#create {:type=>"FloatDatum"}
+  new_data_type_float_datum GET    /data_types/:data_type_id/float_data/new(.:format)       sensor_data#new {:type=>"FloatDatum"}
+ edit_data_type_float_datum GET    /data_types/:data_type_id/float_data/:id/edit(.:format)  sensor_data#edit {:type=>"FloatDatum"}
+      data_type_float_datum GET    /data_types/:data_type_id/float_data/:id(.:format)       sensor_data#show {:type=>"FloatDatum"}
+                            PATCH  /data_types/:data_type_id/float_data/:id(.:format)       sensor_data#update {:type=>"FloatDatum"}
+                            PUT    /data_types/:data_type_id/float_data/:id(.:format)       sensor_data#update {:type=>"FloatDatum"}
+                            DELETE /data_types/:data_type_id/float_data/:id(.:format)       sensor_data#destroy {:type=>"FloatDatum"}
+         data_type_int_data GET    /data_types/:data_type_id/int_data(.:format)             sensor_data#index {:type=>"IntDatum"}
+                            POST   /data_types/:data_type_id/int_data(.:format)             sensor_data#create {:type=>"IntDatum"}
+    new_data_type_int_datum GET    /data_types/:data_type_id/int_data/new(.:format)         sensor_data#new {:type=>"IntDatum"}
+   edit_data_type_int_datum GET    /data_types/:data_type_id/int_data/:id/edit(.:format)    sensor_data#edit {:type=>"IntDatum"}
+        data_type_int_datum GET    /data_types/:data_type_id/int_data/:id(.:format)         sensor_data#show {:type=>"IntDatum"}
+                            PATCH  /data_types/:data_type_id/int_data/:id(.:format)         sensor_data#update {:type=>"IntDatum"}
+                            PUT    /data_types/:data_type_id/int_data/:id(.:format)         sensor_data#update {:type=>"IntDatum"}
+                            DELETE /data_types/:data_type_id/int_data/:id(.:format)         sensor_data#destroy {:type=>"IntDatum"}
+        data_type_text_data GET    /data_types/:data_type_id/text_data(.:format)            sensor_data#index {:type=>"TextDatum"}
+                            POST   /data_types/:data_type_id/text_data(.:format)            sensor_data#create {:type=>"TextDatum"}
+   new_data_type_text_datum GET    /data_types/:data_type_id/text_data/new(.:format)        sensor_data#new {:type=>"TextDatum"}
+  edit_data_type_text_datum GET    /data_types/:data_type_id/text_data/:id/edit(.:format)   sensor_data#edit {:type=>"TextDatum"}
+       data_type_text_datum GET    /data_types/:data_type_id/text_data/:id(.:format)        sensor_data#show {:type=>"TextDatum"}
+                            PATCH  /data_types/:data_type_id/text_data/:id(.:format)        sensor_data#update {:type=>"TextDatum"}
+                            PUT    /data_types/:data_type_id/text_data/:id(.:format)        sensor_data#update {:type=>"TextDatum"}
+                            DELETE /data_types/:data_type_id/text_data/:id(.:format)        sensor_data#destroy {:type=>"TextDatum"}
+        data_type_time_data GET    /data_types/:data_type_id/time_data(.:format)            sensor_data#index {:type=>"TimeDatum"}
+                            POST   /data_types/:data_type_id/time_data(.:format)            sensor_data#create {:type=>"TimeDatum"}
+   new_data_type_time_datum GET    /data_types/:data_type_id/time_data/new(.:format)        sensor_data#new {:type=>"TimeDatum"}
+  edit_data_type_time_datum GET    /data_types/:data_type_id/time_data/:id/edit(.:format)   sensor_data#edit {:type=>"TimeDatum"}
+       data_type_time_datum GET    /data_types/:data_type_id/time_data/:id(.:format)        sensor_data#show {:type=>"TimeDatum"}
+                            PATCH  /data_types/:data_type_id/time_data/:id(.:format)        sensor_data#update {:type=>"TimeDatum"}
+                            PUT    /data_types/:data_type_id/time_data/:id(.:format)        sensor_data#update {:type=>"TimeDatum"}
+                            DELETE /data_types/:data_type_id/time_data/:id(.:format)        sensor_data#destroy {:type=>"TimeDatum"}
+                 data_types GET    /data_types(.:format)                                    data_types#index
+                            POST   /data_types(.:format)                                    data_types#create
+              new_data_type GET    /data_types/new(.:format)                                data_types#new
+             edit_data_type GET    /data_types/:id/edit(.:format)                           data_types#edit
+                  data_type GET    /data_types/:id(.:format)                                data_types#show
+                            PATCH  /data_types/:id(.:format)                                data_types#update
+                            PUT    /data_types/:id(.:format)                                data_types#update
+                            DELETE /data_types/:id(.:format)                                data_types#destroy
+            api_sensor_data GET    /api/sensor_data(.:format)                               api/sensor_data#index {:format=>/json/}
+                            POST   /api/sensor_data(.:format)                               api/sensor_data#create {:format=>/json/}
+       new_api_sensor_datum GET    /api/sensor_data/new(.:format)                           api/sensor_data#new {:format=>/json/}
+      edit_api_sensor_datum GET    /api/sensor_data/:id/edit(.:format)                      api/sensor_data#edit {:format=>/json/}
+           api_sensor_datum GET    /api/sensor_data/:id(.:format)                           api/sensor_data#show {:format=>/json/}
+                            PATCH  /api/sensor_data/:id(.:format)                           api/sensor_data#update {:format=>/json/}
+                            PUT    /api/sensor_data/:id(.:format)                           api/sensor_data#update {:format=>/json/}
+                            DELETE /api/sensor_data/:id(.:format)                           api/sensor_data#destroy {:format=>/json/}
