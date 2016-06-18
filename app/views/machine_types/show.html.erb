@@ -1,29 +1,45 @@
-<p id="notice"><%= notice %></p>
-<h1><%= @machine_type.name %></h1>
-<div>
-  <%= link_to 'Create New Machine', new_machine_path(machine_type_id: @machine_type.id) %>
+<section class="content-header">
+  <h1><%= @machine_type.name %></h1>
+  <div>
+    <%= link_to 'Create New Machine', new_machine_path(machine_type_id: @machine_type.id) %>
 
-  <%= link_to 'Edit', edit_machine_type_path(@machine_type) %> |
-  <%= link_to 'Back', machine_types_path %>
-</div>
-<div>
-  <table>
-    <thead>
-    <tr>
-      <th colspan="5"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @machine_type.machines.each do |machine| %>
-        <tr>
-          <td><%= machine.id %></td>
-          <td><%= machine.name %></td>
-          <td><%= link_to 'Show', machine %></td>
-          <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
-          <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+    <%= link_to 'Edit', edit_machine_type_path(@machine_type) %> |
+    <%= link_to 'Back', machine_types_path %>
+  </div>
+</section>
 
+<!-- Main content -->
+<section class="content">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+        </div>
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @machine_type.machines.each do |machine| %>
+              <tr>
+                <td><%= machine.id %></td>
+                <td><%= machine.name %></td>
+                <td><%= link_to 'Show', machine %></td>
+                <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
+                <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

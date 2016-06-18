@@ -6,8 +6,12 @@ class Api::SensorDataController < ApplicationController
     @sensor_data.data_type = @data_type
     @sensor_data.sensor_id = params[:sensor_id] if params[:sensor_id].present?
     if @sensor_data.save
+      json_response = {
+          next_time: update_between_time
+      }
+
       respond_to do |format|
-        format.json { render json: @sensor_data, status: :created }
+        format.json { render json: json_response, status: :created }
       end
     end
   end
@@ -31,5 +35,9 @@ class Api::SensorDataController < ApplicationController
     else
       raise "UnknownSensorDataClassError: #{@data_type.data_class.to_s}"
     end
+  end
+
+  def update_between_time
+    rand(300)
   end
 end

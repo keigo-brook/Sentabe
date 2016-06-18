@@ -11,7 +11,7 @@ mt2 = MachineType.create(name: "Raspberry Pi 3 B")
 
 mt1.machines.create(name: "Lab Pi1 B+ 1")
 mt1.machines.create(name: "Lab Pi1 B+ 2")
-m1 = mt2.machines.create(name: "Lab Pi3 1")
+m1 = mt2.machines.create(name: "Development")
 mt2.machines.create(name: "Lab Pi3 2")
 
 s1 = m1.sensors.create(name: 'KT001')

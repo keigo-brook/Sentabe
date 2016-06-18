@@ -1,25 +1,78 @@
-<p id="notice"><%= notice %></p>
-<h1><%= @sensor.machine.name %> > <%= @sensor.name %></h1>
+<section class="content-header">
+  <h1><%= @sensor.machine.name %> > <%= @sensor.name %></h1>
+  <%= link_to 'Edit', edit_sensor_path(@sensor) %> |
+  <%= link_to 'Back', sensors_path %>
+</section>
 
-<table>
-  <thead>
-  <tr>
-    <th colspan="4"></th>
-  </tr>
-  </thead>
-
-  <tbody>
+<!-- Main content -->
+<section class="content">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+        </div>
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @sensor.data_types.each do |data_type| %>
+              <tr>
+                <td><%= data_type.name %></td>
+                <td><%= link_to 'Show', data_type_path(data_type, sensor_id: @sensor.id) %></td>
+                <td><%= link_to 'Edit', edit_data_type_path(data_type.id) %></td>
+                <td><%= link_to 'Destroy', data_type_path(data_type.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
   <% @sensor.data_types.each do |data_type| %>
-    <tr>
-      <td><%= data_type.name %></td>
-      <td><%= link_to 'Show', data_type_path(data_type, sensor_id: @sensor.id) %></td>
-      <td><%= link_to 'Edit', edit_data_type_path(data_type.id) %></td>
-      <td><%= link_to 'Destroy', data_type_path(data_type.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <%= data_type.name %>
+          </div>
+          <div class="box-body">
+            <div class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table id="data-info" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="data_info">
+                    <thead>
+                    <tr role="row">
+                      <th class="sorting" tabindex="0" aria-controls="data-info" rowspan="1" colspan="1">ID</th>
+                      <th class="sorting" tabindex="0" aria-controls="data-info" rowspan="1" colspan="1">data</th>
+                      <th class="sorting" tabindex="0" aria-controls="data-info" rowspan="1" colspan="1">captured_at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% data_type_data = data_type.sensor_data.where(sensor_id: @sensor.id) %>
+                    <% data_type_data.each do |datum| %>
+                      <tr role="row">
+                        <td><%= datum.id %></td>
+                        <td><%= datum.data %></td>
+                        <td><%= datum.captured_at %></td>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-  </tbody>
-</table>
-
-
-<%= link_to 'Edit', edit_sensor_path(@sensor) %> |
-<%= link_to 'Back', sensors_path %>
+</section>

@@ -13,12 +13,19 @@
 
   <div>
     <%= f.label :machine_type %>
-    <%= f.select(:machine_type_id, MachineType.all.map { |i| [i.name, i.id] }) %>
+    <%= f.select(:machine_type_id,
+                 MachineType.all.map { |i| [i.name, i.id] },
+                 { selected: @machine.machine_type_id || params[:machine_type_id].to_i }) %>
   </div>
 
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :ipaddress %>
+    <%= f.text_field :ipaddress %>
   </div>
 
   <div class="actions">
