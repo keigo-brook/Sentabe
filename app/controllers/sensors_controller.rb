@@ -72,5 +72,4 @@ class SensorsController < ApplicationController
   def sensor_params
     params.require(:sensor).permit(:machine_id, :name, data_types_attributes: [:name, :dtype])
   end
-
 end

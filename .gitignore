@@ -12,3 +12,7 @@
 !/log/.keep
 /tmp
 /vendor/assets/bower_components
+
+.byebug_history
+.idea/
+*.iml
